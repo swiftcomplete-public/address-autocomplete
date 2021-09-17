@@ -22,6 +22,14 @@ npm install @swiftcomplete/address-autocomplete
 
 Each request needs to be authenticated with an API key, which you can obtain by **[creating a Swiftcomplete account](https://www.swiftcomplete.com/account/register/)**.
 
+## Request flow
+
+Each session should call *autocomplete()* for each keystroke to obtain a list of suggestions, and **must finish** by calling *populateResult(index, suggestions)* to select an address.
+
+The only occasion a session should end without calling *populateResult()* is if you can't find your address.
+
+If you build your integration incorrectly without calling *populateResult()*, your account will be billed per keystroke which is far less cost effective.
+
 ## Example: Search for an address
 
 ```js
