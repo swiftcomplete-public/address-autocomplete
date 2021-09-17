@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/swiftcomplete-public/address-autocomplete/issues"
   },
-  "homepage": "https://github.com/swiftcomplete-public/address-autocomplete#readme"
+  "homepage": "https://github.com/swiftcomplete-public/address-autocomplete#readme",
+  "devDependencies": {
+    "jest": "^27.2.0"
+  }
 }

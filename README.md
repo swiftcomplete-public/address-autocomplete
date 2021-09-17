@@ -30,12 +30,14 @@ const swiftcompleteAddressAutocomplete = require('@swiftcomplete/address-autocom
 swiftcompleteAddressAutocomplete.setAPIKey('INSERT-KEY-HERE');
 
 // Call swiftcompleteAddressAutocomplete.autocomplete for each keystroke until your address appears in the list of results
-let autocompleteResults = await swiftcompleteAddressAutocomplete.autocomplete('100 champs elysees');
+let autocompleteResults = await swiftcompleteAddressAutocomplete.autocomplete('100 champs elysees par');
 
-// Select the 2nd result in the list (index 1)
-let result = await swiftcompleteAddressAutocomplete.populateResult(1, autocompleteResults);
+// Select the 1st result in the list (index 0)
+const selectIndex = 0;
 
-console.log(result);
+let result = await swiftcompleteAddressAutocomplete.populateResult(selectIndex, autocompleteResults);
+
+console.log(result.suggestions[selectIndex]);
 ```
 
 ## Example: Using container searching
@@ -55,13 +57,15 @@ let autocompleteResults = await swiftcompleteAddressAutocomplete.autocomplete('a
 // As autoCompleteResults[0].isContainer == true, set container = autoCompleteResults[0].container to view addresses on the street
 // Make sure to clear the query text
 let containerResults = await swiftcompleteAddressAutocomplete.autocomplete('', {
-    container: 'VjE7QXZlbnVlIGRlcyBDaGFtcHMgRWx5c8OpZXN8UGFyaXM7NDguODY3ODg2OzIuMzE1MjY5'
+    container: autocompleteResults.suggestions[0].container
 });
 
 // Select the 5th result in the container result list (index 4)
-let result = await swiftcompleteAddressAutocomplete.populateResult(4, containerResults);
+const selectIndex = 4;
 
-console.log(result);
+let result = await swiftcompleteAddressAutocomplete.populateResult(selectIndex, containerResults);
+
+console.log(result.suggestions[selectIndex]);
 ```
 
 ## Example: Searching within containers
@@ -79,13 +83,15 @@ let autocompleteResults = await swiftcompleteAddressAutocomplete.autocomplete('a
 // As autoCompleteResults[0].isContainer == true, set container = autoCompleteResults[0].container to view addresses on the street
 // Clear the query text, and set to a building name / number to narrow down the results
 let containerResults = await swiftcompleteAddressAutocomplete.autocomplete('100', {
-    container: 'VjE7QXZlbnVlIGRlcyBDaGFtcHMgRWx5c8OpZXN8UGFyaXM7NDguODY3ODg2OzIuMzE1MjY5'
+    container: autocompleteResults.suggestions[0].container
 });
 
 // Select the first result in the filtered result list (index 0)
-let result = await swiftcompleteAddressAutocomplete.populateResult(0, containerResults);
+const selectIndex = 0;
 
-console.log(result);
+let result = await swiftcompleteAddressAutocomplete.populateResult(selectIndex, containerResults);
+
+console.log(result.suggestions[selectIndex]);
 ```
 
 ## Customise the response with the optional options object
@@ -121,10 +127,10 @@ const swiftcompleteAddressAutocomplete = require('@swiftcomplete/address-autocom
 
 swiftcompleteAddressAutocomplete.setAPIKey('INSERT-KEY-HERE');
 
-// Using the options object to search for the nearest three addresses with building number "166" to a coordinate.
+// Using the options object to suggest the nearest three addresses with building number "166" to a coordinate in France.
 let autocompleteResults = await swiftcompleteAddressAutocomplete.autocomplete('166', {
     biasTowards: '48.88635,2.29497',
-    distanceUnits: 'ft',
+    countries: 'fr',
     maxResults: 3
 });
 
