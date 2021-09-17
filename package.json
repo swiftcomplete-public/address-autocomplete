@@ -1,0 +1,28 @@
+{
+  "name": "@swiftcomplete/address-autocomplete",
+  "version": "1.0.0",
+  "description": "Search for addresses, streets, places and postcodes with this wrapper for the Swiftcomplete Address Autocomplete API",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swiftcomplete-public/address-autocomplete.git"
+  },
+  "keywords": [
+    "address",
+    "autocomplete",
+    "api",
+    "street",
+    "postcode",
+    "places",
+    "swiftcomplete"
+  ],
+  "author": "Swiftcomplete <hello@swiftcomplete.com> (https://www.swiftcomplete.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/swiftcomplete-public/address-autocomplete/issues"
+  },
+  "homepage": "https://github.com/swiftcomplete-public/address-autocomplete#readme"
+}
